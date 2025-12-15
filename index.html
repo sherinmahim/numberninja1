@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Number Ninja – Level 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f4f4f9;
+        }
+        h2 {
+            color: #333;
+        }
+        .problem {
+            margin-bottom: 18px;
+        }
+        input {
+            padding: 6px;
+            font-size: 16px;
+            width: 80px;
+            text-transform: uppercase;
+        }
+        button {
+            margin-top: 14px;
+            padding: 10px 14px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correctAns {
+            color: green;
+            display: none;
+            margin-left: 8px;
+        }
+        .wrongAns {
+            color: red;
+        }
+        #finalPhrase {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff3c4;
+            border-left: 6px solid #ffb300;
+        }
+    </style>
+</head>
+<body>
+
+<h2>🔢 Number Ninja – Level 2</h2>
+<p>Solve each expression → convert number to alphabet (1=A, 2=B, …)</p>
+
+<!-- Problems -->
+<div class="problem">
+  (i) 40 ÷ 5  
+  <input id="a1" type="text" maxlength="1">
+  <span id="s1" class="correctAns">✓ H</span>
+</div>
+
+<div class="problem">
+  (ii) 50 mod 27
+  <input id="a2" type="text" maxlength="1">
+  <span id="s2" class="correctAns">✓ W</span>
+</div>
+
+<div class="problem">
+  (iii) 45 mod 8
+  <input id="a3" type="text" maxlength="1">
+  <span id="s3" class="correctAns">✓ E</span>
+</div>
+
+<div class="problem">
+  (iv) square root of 400  
+  <input id="a4" type="text" maxlength="1">
+  <span id="s4" class="correctAns">✓ T</span>
+</div>
+
+<div class="problem">
+  (v) 81 ÷ 9 
+  <input id="a5" type="text" maxlength="1">
+  <span id="s5" class="correctAns">✓ I</span>
+</div>
+
+<div class="problem">
+  (vi) 85 mod 32  
+  <input id="a6" type="text" maxlength="1">
+  <span id="s6" class="correctAns">✓ U</span>
+</div>
+
+<div class="problem">
+  (vii) square root of 64 
+  <input id="a7" type="text" maxlength="1">
+  <span id="s7" class="correctAns">✓ H</span>
+</div>
+
+<div class="problem">
+  (viii) 100 ÷ 5  
+  <input id="a8" type="text" maxlength="1">
+  <span id="s8" class="correctAns">✓ T</span>
+</div>
+
+<button onclick="checkLevel()">Check Answers</button>
+
+<p id="msg" class="result"></p>
+
+<div id="finalPhrase">
+  <h3>🎉 Hidden Phrase Unlocked!</h3>
+  <h2 id="phrase">A peaceful statue with gentle features an elegantly carved robe creating an atmosphere of calm, prayer, and reverence.</h2>
+</div>
+
+<script>
+const answers = ["H", "W", "E", "T", "I", "U", "H", "T"]; // correct letters
+
+function checkLevel() {
+    let allCorrect = true;
+    document.getElementById("msg").textContent = "";
+
+    for (let i = 1; i <= 8; i++) {  // loop for 8 problems
+        let user = document.getElementById("a" + i).value.trim().toUpperCase();
+        let correct = answers[i - 1];
+
+        let tick = document.getElementById("s" + i);
+
+        if (user === correct) {
+            tick.style.display = "inline";
+        } else {
+            tick.style.display = "none";
+            allCorrect = false;
+        }
+    }
+
+    if (allCorrect) {
+        document.getElementById("msg").innerHTML = "<span style='color:green;'>All correct! Well done!</span>";
+        document.getElementById("finalPhrase").style.display = "block";
+    } else {
+        document.getElementById("msg").innerHTML = "<span class='wrongAns'>Some answers are incorrect. Try again!</span>";
+        document.getElementById("finalPhrase").style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
